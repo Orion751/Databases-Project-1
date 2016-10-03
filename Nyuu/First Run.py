@@ -18,7 +18,7 @@ def initialize():
 
     try:
         # Connect to the database, create a Cursor, and try to create a table. Catch the exception if it already exists.
-        cnx = mysql.connector.connect(user=uname, password=pword, host='sql2.njit.edu', database='mra25')
+        cnx = mysql.connector.connect(user=uname, password=pword, host='sql2.njit.edu', database=uname)
         curse = cnx.cursor()
         mediaDBname = uname + "MediaDB"
         print("The program will now automatically create the DB.\n")
