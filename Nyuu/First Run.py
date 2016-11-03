@@ -36,9 +36,9 @@ def initialize():
         while True:
 
             print("Please input a command. ( ADD, REMOVE, VIEW, DELETE_TABLE, QUIT )")
-            cmdVar = raw_input("Come on, don't be shy!\n\n")
+            cmdVar = raw_input("Come on, don't be shy!\n\n").upper()
 
-            if (cmdVar==("ADD" or "add")):
+            if (cmdVar==("ADD")):
                 print("Please answer the following prompts.\n\nEnter \"QUIT-NOW\" to cancel the ADD operation.")
                 titleTemp=raw_input("What is the title of the work? ")
                 mediaTemp=raw_input("What medium is it?")
