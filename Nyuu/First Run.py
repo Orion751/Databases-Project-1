@@ -6,11 +6,23 @@
 
 import mysql.connector
 from mysql.connector import errorcode
+import re
 
 # User supplies username and password via Standard Input
 
 uname=raw_input("Please enter your username for NJIT's MySQL database: ")
 pword=raw_input("Please enter your password for NJIT's MySQL Database: ")
+
+# Orion751's contribution: Converts output of a curse object to a human-readable string
+def parseTable(curse):
+    delim = ","
+    temp = ""
+    p = re.compile('\)$')
+
+    for i in curse:
+        temp += p.sub("", (str(i) + "\n").replace("(u'", "'").replace("', u'", "'" + delim + " '"))
+
+    return temp
 
 # As this is a simple proof-of-concept, everything is defined in this one function. We'll break it up as time goes on.
 
@@ -49,8 +61,7 @@ def initialize():
 
             if (cmdVar=="VIEW"):
                 curse.execute("SELECT * FROM " + mediaDBname)
-                for i in curse:
-                    print(i)
+                print(parseTable(curse))
 
             if (cmdVar=="REMOVE"):
                 print("Please answer the following prompts.\n\nEnter \"QUIT-NOW\" to cancel the REMOVE operation.")
